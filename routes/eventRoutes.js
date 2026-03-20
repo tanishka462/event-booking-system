@@ -8,4 +8,5 @@ body('date').notEmpty(),
 body('total_capacity').isInt(),
 controller.createEvent
 );
+router.post('/:id/attendance',controller.markAttendance);
 module.exports = router;
