@@ -63,9 +63,3 @@ FOREIGN KEY (EventId)
 REFERENCES Events(id)
 
 );
-
-
-INSERT INTO Users (name,email)
-VALUES
-('tanishka','tanishka13@gmail.com'),
-('axita','axita27@gmail.com');

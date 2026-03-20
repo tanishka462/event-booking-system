@@ -40,3 +40,11 @@ POST /events
 POST /bookings
 GET /users/:id/bookings
 POST /attendance
+
+Docker Setup:
+Run:
+docker-compose up --build
+API:
+http://localhost:5000
+Swagger:
+http://localhost:5000/api-docs
