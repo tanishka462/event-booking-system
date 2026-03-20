@@ -1,0 +1,160 @@
+{
+  "info": {
+    "_postman_id": "f794d9de-79b2-4613-8e81-ab8ddd5ca094",
+    "name": "event-booking",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41960443"
+  },
+  "item": [
+    {
+      "name": "create-event",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"title\":\"Music Concert\",\r\n\"description\":\"Live music event\",\r\n\"date\":\"2026-04-10\",\r\n\"total_capacity\":100\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/events",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "events"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get-events",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "booking-event",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"user_id\":1,\r\n\"event_id\":1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "bookings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "USER ATTENDENCE",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"booking_code\" : \"8f097d4a-13ee-4be1-9404-78aabb39c74b\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/attendance",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "attendance"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "USER BOOKING",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/users/1/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "users",
+            "1",
+            "bookings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TestBookingWithWrongId",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"user_id\":1,\r\n\"event_id\":999\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "bookings"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

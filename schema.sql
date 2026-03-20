@@ -1,0 +1,71 @@
+CREATE TABLE Users (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+name VARCHAR(100) NOT NULL,
+
+email VARCHAR(100) UNIQUE NOT NULL
+
+);
+
+CREATE TABLE Events (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+title VARCHAR(200) NOT NULL,
+
+description TEXT,
+
+date DATETIME NOT NULL,
+
+total_capacity INT NOT NULL,
+
+remaining_tickets INT NOT NULL
+
+);
+
+CREATE TABLE Bookings (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+UserId INT NOT NULL,
+
+EventId INT NOT NULL,
+
+booking_code VARCHAR(100) UNIQUE,
+
+booking_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (UserId)
+REFERENCES Users(id)
+ON DELETE CASCADE,
+
+FOREIGN KEY (EventId)
+REFERENCES Events(id)
+ON DELETE CASCADE
+
+);
+
+CREATE TABLE Attendances (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+UserId INT NOT NULL,
+
+EventId INT NOT NULL,
+
+entry_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY (UserId)
+REFERENCES Users(id),
+
+FOREIGN KEY (EventId)
+REFERENCES Events(id)
+
+);
+
+
+INSERT INTO Users (name,email)
+VALUES
+('tanishka','tanishka13@gmail.com'),
+('axita','axita27@gmail.com');

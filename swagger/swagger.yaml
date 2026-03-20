@@ -1,0 +1,186 @@
+openapi: 3.0.0
+
+info:
+  title: Event Booking API
+  version: 1.0.0
+  description: Mini Event Booking System using Node.js, Express, Sequelize and MySQL
+
+servers:
+  - url: http://localhost:5000
+
+paths:
+
+  /events:
+
+    get:
+      summary: Get all events
+      description: Returns list of all available events
+
+      responses:
+        200:
+          description: Events fetched successfully
+
+    post:
+
+      summary: Create new event
+
+      requestBody:
+
+        required: true
+
+        content:
+
+          application/json:
+
+            schema:
+
+              type: object
+
+              required:
+
+                - title
+                - date
+                - total_capacity
+
+              properties:
+
+                title:
+                  type: string
+                  example: Music Concert
+
+                description:
+                  type: string
+                  example: Live concert event
+
+                date:
+                  type: string
+                  example: 2026-04-10
+
+                total_capacity:
+                  type: integer
+                  example: 100
+
+      responses:
+
+        200:
+          description: Event created successfully
+
+
+  /bookings:
+
+    post:
+
+      summary: Book ticket for event
+
+      description: Books a ticket if seats are available
+
+      requestBody:
+
+        required: true
+
+        content:
+
+          application/json:
+
+            schema:
+
+              type: object
+
+              required:
+
+                - user_id
+                - event_id
+
+              properties:
+
+                user_id:
+                  type: integer
+                  example: 1
+
+                event_id:
+                  type: integer
+                  example: 1
+
+      responses:
+
+        200:
+
+          description: Booking successful
+
+        400:
+
+          description: Invalid input
+
+        500:
+
+          description: Server error
+
+
+  /users/{id}/bookings:
+
+    get:
+
+      summary: Get bookings of a user
+
+      parameters:
+
+        - name: id
+
+          in: path
+
+          required: true
+
+          schema:
+
+            type: integer
+
+          example: 1
+
+      responses:
+
+        200:
+
+          description: User bookings fetched
+
+
+  /attendance:
+
+    post:
+
+      summary: Mark event attendance
+
+      description: Verify booking code and allow entry
+
+      requestBody:
+
+        required: true
+
+        content:
+
+          application/json:
+
+            schema:
+
+              type: object
+
+              required:
+
+                - booking_code
+
+              properties:
+
+                booking_code:
+
+                  type: string
+
+                  example: BOOK-123ABC
+
+      responses:
+
+        200:
+
+          description: Attendance marked
+
+        404:
+
+          description: Invalid booking code
